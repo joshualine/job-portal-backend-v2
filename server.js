@@ -1,21 +1,28 @@
 //Third party packages import
-import express from 'express';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 //My packages import
-import jobRoutes from './routes/jobRoutes.js';
-
-import dotenv from 'dotenv';
-dotenv.config();
+const jobRoutes = require('./routes/jobRoutes.js');
 
 const port = process.env.PORT || 5000;
 const app = express();
+dotenv.config();
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+let corOptions = {
+  origin : 'http://localhost:5000'
+}
+
+//Middlewares
+app.use(express.json());
+app.use(cors(corOptions));
+app.use(express.urlencoded({ extended: true }));
 // app.use(cookieParser());
 
 // Routes
 app.use('/api', jobRoutes);
+// app.use('/api', applicationRoutes);
 
 app.get('/', (req,res) => res.send(`Server is up and running`));
 app.listen(port, () => console.log(`Server started on port ${port}`));

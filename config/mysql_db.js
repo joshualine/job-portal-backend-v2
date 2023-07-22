@@ -1,12 +1,18 @@
-import mysql from "mysql";
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: process.env.DB_PASSWORD,
-  database: "jobportal_db_node",
-});
 
-export default db;
+module.exports = {
+  HOST: 'localhost',
+  USER: 'root',
+  PASSWORD: process.env.DB_PASSWORD,
+  DB: 'jobportal_db_node_2',
+  dialect: 'mysql',
+
+  pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+  }
+}
