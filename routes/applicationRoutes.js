@@ -1,22 +1,16 @@
-// import express from 'express';
-// import db from '../config/mysql_db.js';
+const express = require('express');
 
-// const router = express.Router();
+const applicationController = require('../controllers/applicationController.js')
 
-// // @desc    Get All Applications
-// // @route   GET /api/applications/
-// // @access  Private
-// router.get('/applications', (req, res) => {
-//   const q = "SELECT * FROM applications";
-//   db.query(q, (err, data) => {
-//     if (err) {
-//       console.log(err);
-//       return res.json(err);
-//     }
-//     return res.json(data);
-//   });
-// });
+const router = express.Router();
+
+
+router.get('/applications', applicationController.getAllApplications)
+router.get('/applications/:id', applicationController.getOneApplication)
+router.post('/applications/:job_id', applicationController.addApplication)
+router.delete('/applications/:id', applicationController.deleteApplication)
+router.put('/applications/:id', applicationController.updateApplication)
 
 
 
-// export default router;
+module.exports = router;

@@ -46,7 +46,7 @@ db.sequelize.sync({ force: false })
 // 1 to Many Relation
 db.jobs.hasMany(db.applications, {
   foreignKey: 'job_id',
-  as: 'application'
+  as: 'applications'
 })
 
 db.applications.belongsTo(db.jobs, {
