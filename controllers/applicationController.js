@@ -6,10 +6,10 @@ const Application = db.applications
 
 //1. Add Application
 const addApplication = async (req, res) => {
-    const id = req.params.id
+    const job_id = req.params.job_id
     let data = {
-        application_id: id,
-        First_name: req.body.First_name,
+        jobId: job_id,
+        first_name: req.body.first_name,
         last_name: req.body.last_name,
         phone: req.body.phone,
         email: req.body.email,
@@ -44,9 +44,6 @@ const deleteApplication = async (req, res) => {
   await Application.destroy({ where: { id: id }} )
   res.status(200).send('Application is deleted !')
 }
-
-//-------------------
-// 6. Get applications for a specified application id
 
 
 module.exports = {

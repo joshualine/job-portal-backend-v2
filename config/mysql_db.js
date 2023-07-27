@@ -6,7 +6,7 @@ module.exports = {
   HOST: 'localhost',
   USER: 'root',
   PASSWORD: process.env.DB_PASSWORD,
-  DB: 'jobportal_db_node_2',
+  DB: 'jobportal_db_node_4',
   dialect: 'mysql',
 
   pool: {

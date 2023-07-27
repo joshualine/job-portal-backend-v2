@@ -36,6 +36,7 @@ db.sequelize = sequelize
 
 db.jobs = require('./jobModel.js')(sequelize, DataTypes);
 db.applications = require('./applicationModel.js')(sequelize, DataTypes);
+db.users = require('./userModel.js')(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false })
 .then(() => {
@@ -45,12 +46,11 @@ db.sequelize.sync({ force: false })
 
 // 1 to Many Relation
 db.jobs.hasMany(db.applications, {
-  foreignKey: 'job_id',
   as: 'applications'
 })
 
 db.applications.belongsTo(db.jobs, {
-  foreignKey: 'job_id',
+  foreignKey: 'jobId',
   as: 'job'
 })
 

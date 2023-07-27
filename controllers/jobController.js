@@ -59,15 +59,18 @@ const getApplicationsForJob = async (req, res) => {
   res.status(200).send(job)
 }
 
-// exports.findTutorialById = (jobId) => {
-//   return Job.findByPk(jobId, { include: ["applications"] })
-//     .then((job) => {
-//       return job;
-//     })
-//     .catch((err) => {
-//       console.log(">> Error while finding job: ", err);
-//     });
-// };
+// 7. connect one to many relation Jobs and Applications
+const getJobApplications =  async (req, res) => {
+  const id = req.params.id
+  const data = await Job.findOne({
+      include: [{
+          model: Application,
+          as: 'application'
+      }],
+      where: { id: id }
+  })
+  res.status(200).send(data)
+}
 
 module.exports = {
   getAllJobs,

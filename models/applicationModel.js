@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 
   const Application = sequelize.define("application", {
-      First_name: {
+      first_name: {
           type: DataTypes.STRING,
           allowNull: false
       },
