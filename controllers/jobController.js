@@ -13,11 +13,11 @@ const addJob = async (req, res) => {
   let info = {
       title: req.body.title,
       description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      location: req.body.location
   }
   const job = await Job.create(info)
   res.status(200).send(job)
-  console.log(job)
+  // console.log(job)
 
 }
 

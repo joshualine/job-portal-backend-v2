@@ -56,9 +56,21 @@ const authUser = async (req, res) => {
       email: user.email,
     });
   } else {
-    res.status(200).send('Invalid email or password');
+    res.status(401).send('Invalid email or password');
     // throw new Error('Invalid email or password');
   }
+};
+
+// 8.
+// @desc    Logout user / clear cookie
+// @route   POST /api/users/logout
+// @access  Public
+const logoutUser = (req, res) => {
+  res.cookie('jwt', '', {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({ message: 'Logged out successfully' });
 };
 
 module.exports = {
@@ -67,5 +79,6 @@ module.exports = {
     getOneUser,
     updateUser,
     deleteUser,
-    authUser
+    authUser,
+    logoutUser
 }

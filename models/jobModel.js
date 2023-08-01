@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       description: {
         type: DataTypes.TEXT,
       },
-      published: {
-          type: DataTypes.BOOLEAN
+      location: {
+          type: DataTypes.STRING
       }
   
   })

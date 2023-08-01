@@ -9,8 +9,8 @@ const addApplication = async (req, res) => {
     const job_id = req.params.job_id
     let data = {
         jobId: job_id,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        full_name: req.body.full_name,
+        location: req.body.location,
         phone: req.body.phone,
         email: req.body.email,
     }
