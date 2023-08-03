@@ -1,4 +1,5 @@
 const db = require('../models')
+const {generateToken} = require('../utils/generateToken.js')
 
 // model
 const User = db.users;
@@ -12,7 +13,14 @@ const addUser = async (req, res) => {
         password: req.body.password,
     }
     const user = await User.create(data)
-    res.status(200).send(user)
+    if (user) {
+      generateToken(res, user.id);  
+      res.status(200).send(user)
+    } else {
+      res.status(400);
+      throw new Error('Invalid user data');
+    }
+    
 }
 
 // 2. Get All Users
@@ -50,6 +58,7 @@ const authUser = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email: email, password: password }});
   if (user) {
+    generateToken(res, user.id);
     res.json({
       id: user.id,
       name: user.name,
