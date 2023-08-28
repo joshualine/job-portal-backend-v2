@@ -3,10 +3,10 @@ dotenv.config();
 
 
 module.exports = {
-  HOST: 'localhost',
-  USER: 'proouts_admin2',
+  HOST: process.env.HOST,
+  USER: process.env.USER,
   PASSWORD: process.env.DB_PASSWORD,
-  DB: 'proouts_job_portal_db',
+  DB: process.env.DB,
   dialect: 'mysql',
 
   pool: {
