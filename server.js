@@ -21,7 +21,7 @@ let corOptions = {
 
 //Middlewares
 app.use(express.json());
-app.use(cors(corOptions));
+// app.use(cors(corOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
