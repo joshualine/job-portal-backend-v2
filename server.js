@@ -14,14 +14,14 @@ const app = express();
 dotenv.config();
 
 let corOptions = {
-  origin : '*',
-  credentials:false,          
+  origin : 'https://jobs.prooutsourcingng.com/',
+  credentials:true,          
   optionSuccessStatus:200,
 }
 
 //Middlewares
 app.use(express.json());
-// app.use(cors(corOptions));
+app.use(cors(corOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
