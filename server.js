@@ -15,7 +15,7 @@ dotenv.config();
 
 let corOptions = {
   origin : '*',
-  credentials:true,            //access-control-allow-credentials:true
+  credentials:false,          
   optionSuccessStatus:200,
 }
 
