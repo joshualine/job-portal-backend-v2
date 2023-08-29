@@ -9,9 +9,14 @@ const jobRoutes = require('./routes/jobRoutes.js');
 const applicationRoutes = require('./routes/applicationRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 
+const proxy = require('express-http-proxy');
+
 const port = process.env.PORT || 5000;
 const app = express();
 dotenv.config();
+
+app.use('/api', proxy('https://job-portal-backend-3xwc.onrender.com'));
+
 
 let corOptions = {
   origin : '*',
