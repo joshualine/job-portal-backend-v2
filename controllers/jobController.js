@@ -26,9 +26,14 @@ const addJob = async (req, res) => {
 // @route   GET /api/jobs/
 // @access  Public
 const getAllJobs = async (req, res) => {
-  let jobs = await Job.findAll({});
-  res.status(200).send(jobs)
-}
+  try {
+    let jobs = await Job.findAll({});
+    res.status(200).send(jobs);
+  } catch (error) {
+    console.error('Error fetching jobs:', error);
+    res.status(500).send('An error occurred while fetching jobs.');
+  }
+};
 
 // 3. get a single Job
 const getOneJob = async (req, res) => {
