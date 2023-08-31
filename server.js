@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 
 let corOptions = {
-  origin : 'https://jobs.prooutsourcingng.com/',
+  origin : '*',
   credentials:true,          
   optionSuccessStatus:200,
 }
@@ -33,4 +33,4 @@ app.use('/api/users', userRoutes);
 
 
 app.get('/', (req,res) => res.send(`Server is up and running`));
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen();
