@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 //My packages import
 const jobRoutes = require('./routes/jobRoutes.js');
@@ -30,7 +31,13 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/users', userRoutes);
 
+// Serve static files from the build folder
+app.use(express.static(path.join(__dirname, 'build')));
 
+// Catch-all route to serve the React app
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/', (req,res) => res.send(`Server is up and running`));
 app.listen(port, () => console.log(`Server started on port ${port}`));
